@@ -6,14 +6,15 @@
   redhat.satellite.content_view_filter:
     username: "{{ sat_publisher_username }}"
     password: "{{ sat_publisher_password }}"
-    server_url: ""
-    name: "package filter 1"
-    organization: "Default Organization"
-    content_view: Web Servers
-    filter_type: "rpm"
-    package_name: tcsh
-    min_version: 6.20.00
+    server_url: "{{ sat_server_url }}"
+    name: "{{ item.date_filter_name}}"
+    organization: "{{ organization }}"
+    content_view: "{{ item.name }}"
+    filter_type: "erratum" # required for date filter
+    date_type: "updated" # default
+    end_date: "{{ filter_enddate }}"
     inclusion: True
+  loop: "{{ content_views }}"
 
 - name: Publish the new content view version
   redhat.satellite.content_view_version:
@@ -21,7 +22,8 @@
     password: "{{ sat_publisher_password }}"
     server_url: "{{ sat_server_url }}"
     content_view: "{{ item.name }}"
-    organization: "{{ cv_organization }}"
+    organization: "{{ organization }}"
+  loop: "{{ content_views }}"
 
 - name: Publish the new composite content views version
   redhat.satellite.content_view_version:
@@ -30,6 +32,6 @@
     server_url: "{{ sat_server_url }}"
     content_view: "{{ item.name }}"
     organization: "{{ cv_organization }}"
-
+  loop: "{{ composite_content_views }}"
 
 

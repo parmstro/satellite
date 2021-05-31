@@ -1,22 +1,15 @@
-organization: "RedHatCanada"
+sat_server_url: "https://sat6.parmstrong.ca"
+organization: "Default Organization"
 description: "Published for {{ ansible_date_time.date }}"
-content_view_filter: "IncludeErrataByDate"
-end_date: "{{ ansible_date_time.date }}"
+filter_enddate: "{{ ansible_date_time.date }}"
 num_cvs_to_keep: 3
-base_soes:
-  - name: "SOE_RHEL"
-    environments:
-    - "Development"
-    - "QA"
-  - name: "SOE_RHEL8"
-    environments:
-    - "Development"
-    - "QA"
 content_views:
   - name: "RHVH"
+    date_filter_name: "IncludeErrataByDate"
     environments:
     - "Development"
   - name: "RHVM"
+    date_filter_name: "IncludeErrataByDate"
     environments:
     - "Development"
     - "QA"
