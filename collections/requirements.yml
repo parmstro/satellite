@@ -1,0 +1,6 @@
+---
+collections: 
+  - name: redhat.satellite
+    source: https://cloud.redhat.com/api/automation-hub/
+
+
