@@ -1,5 +1,5 @@
 ---
-# This role expects a list of content views as input. See sample variables
+# This role expects a list of content views as input. See sample variables in vars/all.yml
 #
 
 - name: Update the Errata-by-date filter for content views
