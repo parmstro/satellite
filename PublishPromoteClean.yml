@@ -7,6 +7,10 @@
 
 - name: Publish and Promote the configured Content Views and Composite Content Views
   hosts: all
+  vars_files:
+  - vars/vault_all.yml
+  - vars/all.yml
+
   roles:
   - cvpublisher
   # - cvpromoter
