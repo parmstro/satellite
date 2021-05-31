@@ -6,21 +6,28 @@ description: "Published for {{ ansible_date_time.date }}"
 filter_enddate: "{{ ansible_date_time.date }}"
 num_cvs_to_keep: 3
 content_views:
-  - name: "RHVH"
-    date_filter_name: "IncludeErrataByDate"
+  - name: "RHEL7_SOE"
+    date_filter_name: "ErrataByDate"
     environments:
-    - "Development"
-  - name: "RHVM"
-    date_filter_name: "IncludeErrataByDate"
+    - "SOE_Development"
+    - "SOE_Qualification"
+    - "App_Development"
+  - name: "RHEL8_SOE"
+    date_filter_name: "ErrataByDate"
     environments:
-    - "Development"
-    - "QA"
+    - "SOE_Development"
+    - "SOE_Qualification"
+    - "SOE_Production"
+    - "App_Development"
+- name: "UpgradeFromRHEL79"
+    date_filter_name: "ErrataByDate"
+- name: "UpgradeToRHEL82"
+    date_filter_name: "ErrataByDate"
+    
 composite_content_views:
-  - name: "SOE_CPGPC"
+  - name: "RHEL79to82Upgrade"
     environments:
-    - "Development"
-    - "QA"
-  - name: "SOE_RHVM"
-    environments:
-    - "Development"
-
+    - "SOE_Development"
+    - "SOE_Qualification"
+    - "App_Development"
+  
