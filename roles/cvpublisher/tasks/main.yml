@@ -10,6 +10,7 @@
     name: "{{ item.date_filter_name}}"
     organization: "{{ organization }}"
     content_view: "{{ item.name }}"
+    description: "{{ description }}"
     filter_type: "erratum" # required for date filter
     date_type: "updated" # default
     end_date: "{{ filter_enddate }}"
@@ -23,6 +24,7 @@
     server_url: "{{ sat_server_url }}"
     content_view: "{{ item.name }}"
     organization: "{{ organization }}"
+    description: "{{ description }}"
   loop: "{{ content_views }}"
 
 - name: Publish the new composite content views version
@@ -31,7 +33,8 @@
     password: "{{ sat_publisher_password }}"
     server_url: "{{ sat_server_url }}"
     content_view: "{{ item.name }}"
-    organization: "{{ cv_organization }}"
+    organization: "{{ organization }}"
+    description: "{{ description }}"
   loop: "{{ composite_content_views }}"
 
 
