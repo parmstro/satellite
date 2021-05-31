@@ -1,0 +1,35 @@
+---
+# This role expects a list of content views as input. See sample variables
+#
+
+- name: Update the Errata-by-date filter for content views
+  redhat.satellite.content_view_filter:
+    username: "{{ sat_publisher_username }}"
+    password: "{{ sat_publisher_password }}"
+    server_url: ""
+    name: "package filter 1"
+    organization: "Default Organization"
+    content_view: Web Servers
+    filter_type: "rpm"
+    package_name: tcsh
+    min_version: 6.20.00
+    inclusion: True
+
+- name: Publish the new content view version
+  redhat.satellite.content_view_version:
+    username: "{{ sat_publisher_username }}"
+    password: "{{ sat_publisher_password }}"
+    server_url: "{{ sat_server_url }}"
+    content_view: "{{ item.name }}"
+    organization: "{{ cv_organization }}"
+
+- name: Publish the new composite content views version
+  redhat.satellite.content_view_version:
+    username: "{{ sat_publisher_username }}"
+    password: "{{ sat_publisher_password }}"
+    server_url: "{{ sat_server_url }}"
+    content_view: "{{ item.name }}"
+    organization: "{{ cv_organization }}"
+
+
+
