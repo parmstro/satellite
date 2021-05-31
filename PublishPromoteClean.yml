@@ -1,0 +1,13 @@
+---
+# This play publishes and promotes the configured Content Views and Composite Content Views for the Satellite
+# This play optionally will remove any old content views in the life cycles if num_cvs_to_keep > 0 
+# This is intended for periodic scheduled publishing rather than CV/CCV general maintenance.
+# There is another play that automatically updates the configuration see: configuration_update.yml
+
+
+- name: Publish and Promote the configured Content Views and Composite Content Views
+  hosts: all
+  roles:
+  - cvpublisher
+  # - cvpromoter
+  # - cvremover
