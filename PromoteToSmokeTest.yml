@@ -9,7 +9,7 @@
   hosts: all
   vars_files:
   - vars/vault_all.yml
-  - vars/all.yml
+  - vars/PromoteForSmokeTest.yml
 
   roles:
   - cvpromoter
