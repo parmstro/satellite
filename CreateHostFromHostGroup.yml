@@ -16,6 +16,7 @@
       location: "{{ sat_location }}"
       name: "{{ host.fqdn }}"
       hostgroup: "{{ host.hostgroup }}"
+      compute_resource: "{{ host.compute_resource }}"
       compute_profile: "{{ host.compute_profile }}"
       state: present
     loop: "{{ hostlist }}"
