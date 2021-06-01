@@ -1,0 +1,11 @@
+---
+hostlist:
+  - hostname: "smokejboss.parmstrong.ca"
+    hostgroup: "baseRHEL8"
+    compute_profile: "2-Medium"
+  - hostname: "smokelamp.parmstrong.ca"
+    hostgroup: "baseRHEL8"
+    compute_profile: "2-Medium"
+  - hostname: "smokewordpress.parmstrong.ca"
+    hostgroup: "baseRHEL8"
+    compute_profile: "2-Medium"
