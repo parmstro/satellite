@@ -11,7 +11,7 @@
     content_view: "{{ item.name }}"
     description: "{{ description }}"
     current_lifecycle_environment: Library
-    lifecycle_environments: {{ item.environments }}
+    lifecycle_environments: "{{ item.environments }}"
   loop: "{{ content_views }}"
 
 - name: Promote the configured composite content views
@@ -23,5 +23,5 @@
     content_view: "{{ item.name }}"
     description: "{{ description }}"
     current_lifecycle_environment: Library
-    lifecycle_environments: {{ item.environments }}
+    lifecycle_environments: "{{ item.environments }}"
   loop: "{{ composite_content_views }}"
