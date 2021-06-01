@@ -18,6 +18,7 @@
       hostgroup: "{{ host.hostgroup }}"
       compute_resource: "{{ host.compute_resource }}"
       compute_profile: "{{ host.compute_profile }}"
+      mac: "{{ host.mac }}"
       state: present
     loop: "{{ hostlist }}"
     loop_control:
