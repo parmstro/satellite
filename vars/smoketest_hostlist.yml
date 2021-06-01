@@ -1,4 +1,7 @@
 ---
+sat_publisher_username: "{{ vault_sat_publisher_username }}"
+sat_publisher_password: "{{ vault_sat_publisher_password }}"
+sat_server_url: "https://sat6.parmstrong.ca"
 hostlist:
   - hostname: "smokejboss.parmstrong.ca"
     hostgroup: "baseRHEL8"
