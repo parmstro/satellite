@@ -14,7 +14,7 @@
       server_url: "{{ sat_server_url }}"
       name: "{{ host.fqdn }}"
       hostgroup: "{{ host.hostgroup }}"
-      compute_profile: "{{ host.compute_profile"
+      compute_profile: "{{ host.compute_profile }}"
       state: present
     loop: "{{ hostlist }}"
     loop_control:
