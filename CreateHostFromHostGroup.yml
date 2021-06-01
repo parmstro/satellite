@@ -12,6 +12,8 @@
       username: "{{ sat_publisher_username }}"
       password: "{{ sat_publisher_password }}"
       server_url: "{{ sat_server_url }}"
+      organization: "{{ sat_organization }}"
+      location: "{{ sat_location }}"
       name: "{{ host.fqdn }}"
       hostgroup: "{{ host.hostgroup }}"
       compute_profile: "{{ host.compute_profile }}"
