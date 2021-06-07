@@ -19,7 +19,7 @@ hostlist:
     compute_resource: "vcenter.parmstrong.ca"
     compute_profile: "2-Medium"
     mac: "00:AA:BB:CC:DD:00"
-  - fqdn: "smokewordpress.parmstrong.ca"
+  - fqdn: "smokedrupal.parmstrong.ca"
     hostgroup: "baseRHEL8"
     compute_resource: "vcenter.parmstrong.ca"
     compute_profile: "2-Medium"
