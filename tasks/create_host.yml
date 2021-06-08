@@ -78,10 +78,10 @@
 
 - name: Restart the host
   uri:
-    url: "{{ host_server_url }}/api/v2/discovered_hosts/{{ target_name }}/reboot"
+    url: "{{ sat_server_url }}/api/v2/discovered_hosts/{{ target_name }}/reboot"
     method: PUT
-    user: "{{ host_admin_username }}"
-    password: "{{ host_admin_password }}"
+    user: "{{ sat_publisher_username }}"
+    password: "{{ sat_publisher_password }}"
     force_basic_auth: yes
     validate_certs: no
     status_code: 200
