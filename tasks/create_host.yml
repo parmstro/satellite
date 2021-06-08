@@ -1,3 +1,7 @@
+- name: "Set default virtual MAC"
+  set_fact:
+    target_mac: "{{ host.mac }}"
+
 - name: "Get MAC of bare metal machine"
   block:
   - name: Get info on discovered hosts that meet criteria
@@ -18,19 +22,18 @@
 
   - set_fact:
       mac: "{{ item.mac }}"
+      name: "{{ item.name }}"
     # when condition is using > to account for local interface always in list
     when: item.facts_hash.interfaces.split(',')|length > discovered_host_req_nic_count 
     loop: "{{ discovered_hosts_resources }}"
     register: hosts_macs_results
     no_log: true
 
-  - set_fact:
-      discovered_hosts_pri_macs: "{{ hosts_macs_results.results | map(attribute='ansible_facts.mac') | list }}"
-    no_log: true
-
   - name: "Selecting first discovered host matching criteria"
     set_fact:
-      host.mac: "{{ discovered_hosts_pri_macs[0] }}"
+      target_mac: "{{ hosts_macs_results.results[0].mac }}"
+      target_dhostname: "{{ hosts_macs_results.results[0].name }}"
+  
   when: host.compute_resource == "Baremetal"
 
 - name: "Deploy the host"
@@ -45,7 +48,7 @@
     hostgroup: "{{ host.hostgroup }}"
     compute_resource: "{{ host.compute_resource }}"
     compute_profile: "{{ host.compute_profile }}"
-    mac: "{{ host.mac }}"
+    mac: "{{ target_mac }}"
     build: true
     state: present
     compute_attributes:
