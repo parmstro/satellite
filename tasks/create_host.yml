@@ -31,8 +31,8 @@
 
   - name: "Selecting first discovered host matching criteria"
     set_fact:
-      target_mac: "{{ hosts_macs_results.results | map(attribute='ansible_facts.mac') | list | first }}"
-      target_dhostname: "{{ hosts_macs_results.results | map(attribute='ansible_facts.name') | list | first }}"
+      target_mac: "{{ hosts_macs_results.results | select('match', 'ansible_facts.mac') | list | first }}"
+      target_dhostname: "{{ hosts_macs_results.results | select('match', 'ansible_facts.name') | list | first }}"
   
   when: host.compute_resource == "Baremetal"
 
