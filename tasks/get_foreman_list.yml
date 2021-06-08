@@ -2,13 +2,15 @@
 # This task retrieves a list of items and the details for each item
 # 
 
-- name: Get foreman search results
-  theforeman.foreman.foreman_search_facts:
-    username: "{{ foreman_admin_username }}"
-    password: "{{ foreman_admin_password }}"
-    server_url: "{{ foreman_server_url }}"
-    resource: "{{ resource }}"
-    search: "{{ foreman_std_search_string }}"
+- name: Get search results from Satellite
+  redhat.satellite.resource_info:
+    username: "{{ sat_username }}"
+    password: "{{ sat_password }}"
+    server_url: "{{ sat_server_url }}"
+#    organization: "{{ sat_organization }}"
+#    params: "{{ sat_additional_params }}"
+    resource: "{{ sat_resource }}"
+    search: "{{ sat_search_string }}"
     full_details: true 
     validate_certs: false
   register: results 

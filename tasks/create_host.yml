@@ -3,8 +3,10 @@
   - name: Get info on discovered hosts that meet criteria
     include_tasks: tasks/get_foreman_list.yml
     vars:
-      resource: "{{ discovered_hosts_resouce }}"
-      foreman_std_search_string: "{{ discovered_hosts_search }}"
+      sat_resource: "{{ discovered_hosts_resouce }}"
+      sat_search_string: "{{ discovered_hosts_search }}"
+      sat_username: "{{ sat_publisher_username }}"
+      sat_password: "{{ sat_publisher_password }}"
     # sets variables list and resources
 
   - set_fact:
