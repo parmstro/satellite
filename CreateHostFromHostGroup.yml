@@ -58,20 +58,20 @@
           compute_attributes:
             start: "1"
         
-        - name: Remove the discovered host entry
-          uri:
-            url: "{{ sat_server_url }}/api/v2/discovered_hosts/{{ dhost_name }}"
-            method: DELETE
-            user: "{{ sat_publisher_username }}"
-            password: "{{ sat_publisher_password }}"
-            force_basic_auth: yes
-            validate_certs: no
-            status_code: 200
-            headers:
-              Content-Type: application/json
-              Accept: :application/json,version=2
-          register: hostrestartdata
-          when: host.compute_resource == "Baremetal"
+      - name: Remove the discovered host entry
+        uri:
+          url: "{{ sat_server_url }}/api/v2/discovered_hosts/{{ dhost_name }}"
+          method: DELETE
+          user: "{{ sat_publisher_username }}"
+          password: "{{ sat_publisher_password }}"
+          force_basic_auth: yes
+          validate_certs: no
+          status_code: 200
+          headers:
+            Content-Type: application/json
+            Accept: :application/json,version=2
+        register: hostrestartdata
+        when: host.compute_resource == "Baremetal"
 
     loop: "{{ hostlist }}"
     loop_control:
