@@ -25,9 +25,13 @@
       name: "{{ item.name }}"
     # when condition is using > to account for local interface always in list
     when: item.facts_hash.interfaces.split(',')|length > discovered_host_req_nic_count 
-    loop: "{{ discovered_hosts_resources }}"
+    loop: "{{ resources }}"
     register: hosts_macs_results
     no_log: true
+
+  - debug:
+      var: hosts_macs_results
+
 
   - name: "Selecting first discovered host matching criteria"
     set_fact:
