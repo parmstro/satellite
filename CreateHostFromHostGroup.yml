@@ -8,70 +8,8 @@
 
   tasks:
   - name: "Create the host"
-    block: 
-      - name: "Get MAC of bare metal machine"
-        block:
-          - name: Get info on discovered hosts that meet criteria
-            include_tasks: tasks/get_foreman_list.yml
-            vars:
-              resource: "{{ discovered_hosts_resouce }}"
-              foreman_std_search_string: "{{ discovered_hosts_search }}"
-            # sets variables list and resources
-
-          - set_fact:
-              discovered_hosts_resources: "{{ resources }}"
-            no_log: true
-
-          - set_fact:
-              mac: "{{ item.mac }}"
-            # when condition is using > to account for local interface always in list
-            when: item.facts_hash.interfaces.split(',')|length > discovered_host_req_nic_count 
-            loop: "{{ discovered_hosts_resources }}"
-            register: hosts_macs_results
-            no_log: true
-
-          - set_fact:
-              discovered_hosts_pri_macs: "{{ hosts_macs_results.results | map(attribute='ansible_facts.mac') | list }}"
-            no_log: true
-
-          - name: "Selecting first discovered host matching criteria"
-            set_fact:
-              host.mac: "{{ discovered_hosts_pri_macs[0] }}"
-        when: host.compute_resource == "Baremetal"
-
-    - name: "Deploy the host"
-      redhat.satellite.host:
-        username: "{{ sat_publisher_username }}"
-        password: "{{ sat_publisher_password }}"
-        server_url: "{{ sat_server_url }}"
-        organization: "{{ sat_organization }}"
-        location: "{{ sat_location }}"
-        name: "{{ host.fqdn }}"
-        comment: "{{ host_build_comment }}"
-        hostgroup: "{{ host.hostgroup }}"
-        compute_resource: "{{ host.compute_resource }}"
-        compute_profile: "{{ host.compute_profile }}"
-        mac: "{{ host.mac }}"
-        build: true
-        state: present
-        compute_attributes:
-          start: "1"
+    include_tasks: create_host.yml
       
-    - name: Remove the discovered host entry
-      uri:
-        url: "{{ sat_server_url }}/api/v2/discovered_hosts/{{ dhost_name }}"
-        method: DELETE
-        user: "{{ sat_publisher_username }}"
-        password: "{{ sat_publisher_password }}"
-        force_basic_auth: yes
-        validate_certs: no
-        status_code: 200
-        headers:
-          Content-Type: application/json
-          Accept: :application/json,version=2
-      register: hostrestartdata
-      when: host.compute_resource == "Baremetal"
-
     loop: "{{ hostlist }}"
     loop_control:
       loop_var: host
