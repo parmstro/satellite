@@ -6,7 +6,7 @@
 
   tasks:
   - name: "Create the host"
-    include_tasks: create_host.yml
+    include_tasks: tasks/create_host.yml
       
     loop: "{{ hostlist }}"
     loop_control:
