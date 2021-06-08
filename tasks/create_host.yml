@@ -13,10 +13,6 @@
       sat_password: "{{ sat_publisher_password }}"
     # sets variables list and resources
 
-  - set_fact:
-      discovered_hosts_resources: "{{ resources }}"
-    no_log: true
-
   - debug:
       var: resources
 
@@ -32,11 +28,10 @@
   - debug:
       var: hosts_macs_results
 
-
   - name: "Selecting first discovered host matching criteria"
     set_fact:
-      target_mac: "{{ hosts_macs_results.results.ansible_facts.mac | first }}"
-      target_dhostname: "{{ hosts_macs_results.results.ansible_facts.name | first }}"
+      target_mac: "{{ hosts_macs_results.results | map(attribute='ansible_facts.mac') | list | first }}"
+      target_dhostname: "{{ hosts_macs_results.results | map(attribute='ansible_facts.name') | list | first }}"
   
   when: host.compute_resource == "Baremetal"
 
