@@ -31,15 +31,13 @@
 
   - name: "Selecting first discovered host matching criteria"
     set_fact:
-      target: "{{ hosts_macs_results.results | select('match', 'ansible_facts') | list }}"
-    
+      target_mac: "{{ hosts_macs_results.results | json_query('[?ansible_facts.mac]') | list | first }}"
+      target_name: "{{ hosts_macs_results.results | json_query('[?ansible_facts.name]') | list | first }}"
+  
   - debug:
-      var: target
+      var: target.mac, target.name
 
-  - set_fact:
-      target_mac: "{{ target.mac }}"
-      target_dhostname: "{{ target.name }}"
-
+  
   when: host.compute_resource == "Baremetal"
 
 - name: "Deploy the host"
@@ -62,7 +60,7 @@
   
 - name: Remove the discovered host entry
   uri:
-    url: "{{ sat_server_url }}/api/v2/discovered_hosts/{{ target_dhostname }}"
+    url: "{{ sat_server_url }}/api/v2/discovered_hosts/{{ target_name }}"
     method: DELETE
     user: "{{ sat_publisher_username }}"
     password: "{{ sat_publisher_password }}"
