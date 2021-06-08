@@ -13,15 +13,16 @@
       sat_password: "{{ sat_publisher_password }}"
     # sets variables list and resources
 
-  - debug:
-      var: resources
+  - set_fact:
+      discovered_hosts_resources: "{{ resources }}"
+    no_log: true
 
   - set_fact:
       mac: "{{ item.mac }}"
       name: "{{ item.name }}"
     # when condition is using > to account for local interface always in list
     when: item.facts_hash.interfaces.split(',')|length > discovered_host_req_nic_count 
-    loop: "{{ resources }}"
+    loop: "{{ discovered_hosts_resources }}"
     register: hosts_macs_results
     no_log: true
 
@@ -55,7 +56,7 @@
   
 - name: Remove the discovered host entry
   uri:
-    url: "{{ sat_server_url }}/api/v2/discovered_hosts/{{ dhost_name }}"
+    url: "{{ sat_server_url }}/api/v2/discovered_hosts/{{ target_dhostname }}"
     method: DELETE
     user: "{{ sat_publisher_username }}"
     password: "{{ sat_publisher_password }}"
