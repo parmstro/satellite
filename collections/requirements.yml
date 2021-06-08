@@ -2,6 +2,5 @@
 collections: 
   - name: redhat.satellite
     source: https://cloud.redhat.com/api/automation-hub/
-  - name: https://github.com/theforeman/foreman-ansible-modules.git
-    type: git
-    version: devel
+  - name: theforeman.foreman
+    source: https://galaxy.ansible.com/download/theforeman-foreman-2.1.0.tar.gz
