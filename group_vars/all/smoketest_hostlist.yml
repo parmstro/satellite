@@ -22,7 +22,7 @@ hostlist:
     mac: "00:50:56:ff:ff:ff"
     dhostname: ""
   - fqdn: "smokejboss.parmstrong.ca"
-    hostgroup: "baseRHEL8"
+    hostgroup: "baseRHEL8/JBossSOE"
     compute_resource: "vcenter.parmstrong.ca"
     compute_profile: "2-Medium"
     mac: "00:50:56:ff:ff:ff"
