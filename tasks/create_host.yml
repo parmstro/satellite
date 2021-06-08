@@ -31,8 +31,8 @@
 
   - name: "Selecting first discovered host matching criteria"
     set_fact:
-      target: "{{ hosts_macs_results.results | json_query('[?[].ansible_facts]') | list | first  }}"
-      #target_name: "{{ hosts_macs_results.results | json_query('[?[].ansible_facts]') | list  }}"
+      target: "{{ hosts_macs_results.results | json_query('[].ansible_facts') | list | first  }}"
+      #target_name: "{{ hosts_macs_results.results | json_query('[].ansible_facts') | list  }}"
   
   - debug:
       var: target.mac, target.name
