@@ -37,11 +37,10 @@
   - set_fact:
       target_mac: "{{ target.mac }}"
       target_name: "{{ target.name }}"
-      compute_resource: ""
 
   when: host.compute_resource == "Baremetal"
 
-- name: "Deploy the host"
+- name: "Deploy the virtual host"
   redhat.satellite.host:
     username: "{{ sat_publisher_username }}"
     password: "{{ sat_publisher_password }}"
@@ -58,7 +57,25 @@
     state: present
     compute_attributes:
       start: "1"
-  
+  when: host.compute_resource != "Baremetal"
+
+- name: "Deploy the Bare Metal host"
+  redhat.satellite.host:
+    username: "{{ sat_publisher_username }}"
+    password: "{{ sat_publisher_password }}"
+    server_url: "{{ sat_server_url }}"
+    organization: "{{ sat_organization }}"
+    location: "{{ sat_location }}"
+    name: "{{ host.fqdn }}"
+    comment: "{{ host_build_comment }}"
+    hostgroup: "{{ host.hostgroup }}"
+    mac: "{{ target_mac }}"
+    build: true
+    state: present
+    compute_attributes:
+      start: "1"
+  when: host.compute_resource == "Baremetal"
+
 - name: Remove the discovered host entry
   uri:
     url: "{{ sat_server_url }}/api/v2/discovered_hosts/{{ target_name }}"
