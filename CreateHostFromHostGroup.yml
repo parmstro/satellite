@@ -2,9 +2,7 @@
 # This play creates a host of a defined name from a defined hostgroup
 - name: Publish and Promote the configured Content Views and Composite Content Views
   hosts: all
-  vars_files:
-  - vars/vault_all.yml
-  - vars/smoketest_hostlist.yml
+
 
   tasks:
   - name: "Create the host"
