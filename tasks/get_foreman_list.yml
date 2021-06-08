@@ -1,0 +1,23 @@
+---
+# This task retrieves a list of items and the details for each item
+# 
+
+- name: Get foreman search results
+  foreman_search_facts:
+    username: "{{ foreman_admin_username }}"
+    password: "{{ foreman_admin_password }}"
+    server_url: "{{ foreman_server_url }}"
+    resource: "{{ resource }}"
+    search: "{{ foreman_std_search_string }}"
+    full_details: true 
+    validate_certs: false
+  register: results 
+
+- set_fact:
+    list: "{{ results.resources | json_query('[*].name') }}"
+
+- set_fact:
+    resources: "{{ results.resources }}"
+  
+
+
