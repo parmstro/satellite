@@ -1,6 +1,7 @@
-- name: "Set default virtual MAC"
+- name: "Set defaults"
   set_fact:
     target_mac: "{{ host.mac }}"
+    compute_resource: "{{ host.compute_resource }}"
 
 - name: "Get MAC of bare metal machine"
   block:
@@ -26,18 +27,16 @@
     register: hosts_macs_results
     no_log: true
 
-  - debug:
-      var: hosts_macs_results
+  #- debug:
+  #    var: hosts_macs_results
 
   - name: "Selecting first discovered host matching criteria"
     set_fact:
       target: "{{ hosts_macs_results.results | json_query('[].ansible_facts') | list | first  }}"
-      #target_name: "{{ hosts_macs_results.results | json_query('[].ansible_facts') | list  }}"
-  
-  - debug:
-      var: target.mac, target.name
+      target_mac: "{{ target.mac }}"
+      target_name: "{{ target.name }}"
+      compute_resource: ""
 
-  
   when: host.compute_resource == "Baremetal"
 
 - name: "Deploy the host"
@@ -50,7 +49,7 @@
     name: "{{ host.fqdn }}"
     comment: "{{ host_build_comment }}"
     hostgroup: "{{ host.hostgroup }}"
-    compute_resource: "{{ host.compute_resource }}"
+    compute_resource: "{{ compute_resource }}"
     compute_profile: "{{ host.compute_profile }}"
     mac: "{{ target_mac }}"
     build: true
