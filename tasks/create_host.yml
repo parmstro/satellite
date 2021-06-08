@@ -31,7 +31,7 @@
 
   - name: "Selecting first discovered host matching criteria"
     set_fact:
-      target: "{{ hosts_macs_results.results | select('match', 'ansible_facts') | list | first }}"
+      target: "{{ hosts_macs_results.results | select('match', 'ansible_facts') | list }}"
     
   - debug:
       var: target
@@ -39,7 +39,7 @@
   - set_fact:
       target_mac: "{{ target.mac }}"
       target_dhostname: "{{ target.name }}"
-      
+
   when: host.compute_resource == "Baremetal"
 
 - name: "Deploy the host"
