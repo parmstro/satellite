@@ -29,7 +29,6 @@
 
   - debug:
       var: hosts_macs_results
-    when: debugger == true
 
   - name: "Selecting first discovered host matching criteria"
     set_fact:
@@ -39,34 +38,7 @@
       target_mac: "{{ target.mac }}"
       target_name: "{{ target.name }}"
 
-  - debug:
-      var: 
-        - target_mac
-        - target_name
-        
-    when: debugger == true
-  
   when: host.compute_resource == "Baremetal"
-
-- name: "Deploy the virtual host"
-  redhat.satellite.host:
-    username: "{{ sat_publisher_username }}"
-    password: "{{ sat_publisher_password }}"
-    server_url: "{{ sat_server_url }}"
-    organization: "{{ sat_organization }}"
-    location: "{{ sat_location }}"
-    name: "{{ host.fqdn }}"
-    comment: "{{ host_build_comment }}"
-    hostgroup: "{{ host.hostgroup }}"
-    compute_resource: "{{ compute_resource }}"
-    compute_profile: "{{ host.compute_profile }}"
-    mac: "{{ target_mac }}"
-    build: true
-    state: present
-    compute_attributes:
-      start: "1"
-  register: deploy_response
-  when: host.compute_resource != "Baremetal" and deploy == true
 
 - name: "Deploy the Bare Metal host"
   redhat.satellite.host:
