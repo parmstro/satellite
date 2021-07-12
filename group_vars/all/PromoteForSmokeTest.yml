@@ -12,14 +12,28 @@ content_views:
     date_filter_name: "ErrataByDate"
     environments:
     - "SOE_Development"
-    
+  
   - name: "RHEL8_SOE"
     date_filter_name: "ErrataByDate"
     environments:
     - "SOE_Development"
-        
+  
+  - name: "UpgradeFromRHEL79"
+    date_filter_name: "ErrataByDate"
+  
+  - name: "UpgradeToRHEL82"
+    date_filter_name: "ErrataByDate"
+
+  - name: "JBossEAP73"
+    date_filter_name: "ErrataByDate"
+    environments:
+    - "SOE_Development"
+    
 composite_content_views:
   - name: "RHEL79to82Upgrade"
     environments:
     - "SOE_Development"
-    
+  
+  - name: "JBoss_SOE"
+    environments:
+    - "SOE_Development"

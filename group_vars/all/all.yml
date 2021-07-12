@@ -11,6 +11,7 @@ content_views:
     environments:
     - "SOE_Development"
     - "SOE_Qualification"
+    - "SOE_Production"
     - "App_Development"
   
   - name: "RHEL8_SOE"
@@ -26,11 +27,27 @@ content_views:
   
   - name: "UpgradeToRHEL82"
     date_filter_name: "ErrataByDate"
+
+  - name: "JBossEAP73"
+    date_filter_name: "ErrataByDate"
+    environments:
+    - "SOE_Development"
+    - "SOE_Qualification"
+    - "SOE_Production"
+    - "App_Development"
     
 composite_content_views:
   - name: "RHEL79to82Upgrade"
     environments:
     - "SOE_Development"
     - "SOE_Qualification"
+    - "SOE_Production"
     - "App_Development"
   
+  - name: "JBoss_SOE"
+    environments:
+    - "SOE_Development"
+    - "SOE_Qualification"
+    - "SOE_Production"
+    - "App_Development"
+
