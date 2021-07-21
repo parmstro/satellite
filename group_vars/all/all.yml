@@ -13,7 +13,9 @@ content_views:
     - "SOE_Qualification"
     - "SOE_Production"
     - "App_Development"
-  
+    - "App_Qualification"
+    - "App_Production"
+
   - name: "RHEL8_SOE"
     date_filter_name: "ErrataByDate"
     environments:
@@ -21,6 +23,8 @@ content_views:
     - "SOE_Qualification"
     - "SOE_Production"
     - "App_Development"
+    - "App_Qualification"
+    - "App_Production"
   
   - name: "UpgradeFromRHEL79"
     date_filter_name: "ErrataByDate"
