@@ -7,7 +7,7 @@
     username: "{{ sat_publisher_username }}"
     password: "{{ sat_publisher_password }}"
     server_url: "{{ sat_server_url }}"
-    organization: "{{ organization }}"
+    organization: "{{ sat_organization }}"
     content_view: "{{ item.name }}"
     description: "{{ description }}"
     current_lifecycle_environment: Library
@@ -19,7 +19,7 @@
     username: "{{ sat_publisher_username }}"
     password: "{{ sat_publisher_password }}"
     server_url: "{{ sat_server_url }}"
-    organization: "{{ organization }}"
+    organization: "{{ sat_organization }}"
     content_view: "{{ item.name }}"
     description: "{{ description }}"
     current_lifecycle_environment: Library

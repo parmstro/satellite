@@ -8,7 +8,7 @@
     password: "{{ sat_publisher_password }}"
     server_url: "{{ sat_server_url }}"
     name: "{{ item.date_filter_name}}"
-    organization: "{{ organization }}"
+    organization: "{{ sat_organization }}"
     content_view: "{{ item.name }}"
     description: "{{ description }}"
     filter_type: "erratum" # required for date filter
@@ -23,7 +23,7 @@
     password: "{{ sat_publisher_password }}"
     server_url: "{{ sat_server_url }}"
     content_view: "{{ item.name }}"
-    organization: "{{ organization }}"
+    organization: "{{ sat_organization }}"
     description: "{{ description }}"
   loop: "{{ content_views }}"
 
@@ -33,7 +33,7 @@
     password: "{{ sat_publisher_password }}"
     server_url: "{{ sat_server_url }}"
     content_view: "{{ item.name }}"
-    organization: "{{ organization }}"
+    organization: "{{ sat_organization }}"
     description: "{{ description }}"
   loop: "{{ composite_content_views }}"
 
