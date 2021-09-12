@@ -42,8 +42,8 @@ content_views:
       description: "Include all errata updated as of the 1st of the month"
       repositories: "[]"
       rules:
-      - name: "errata-by-date-{{ errata_end_date }}"
-        end_date: "{{ errata_end_date }}"
+      - name: "errata-by-date-{{ filter_enddate }}"
+        end_date: "{{ filter_enddate }}"
         date_type: "issued"
         types:
         - "enhancement"
@@ -104,8 +104,8 @@ content_views:
       description: "Include all errata updated as of the 1st of the month"
       repositories: "[]"
       rules:
-      - name: "errata-by-date-{{ errata_end_date }}"
-        end_date: "{{ errata_end_date }}"
+      - name: "errata-by-date-{{ filter_enddate }}"
+        end_date: "{{ filter_enddate }}"
         date_type: "issued"
         types:
         - "enhancement"
@@ -168,8 +168,8 @@ content_views:
       description: "Include all errata updated as of the 1st of the month"
       repositories: "[]"
       rules:
-      - name: "errata-by-date-{{ errata_end_date }}"
-        end_date: "{{ errata_end_date }}"
+      - name: "errata-by-date-{{ filter_enddate }}"
+        end_date: "{{ filter_enddate }}"
         date_type: "issued"
         types:
         - "enhancement"
@@ -221,8 +221,8 @@ content_views:
       description: "Include all errata updated as of the 1st of the month"
       repositories: "[]"
       rules:
-      - name: "errata-by-date-{{ errata_end_date }}"
-        end_date: "{{ errata_end_date }}"
+      - name: "errata-by-date-{{ filter_enddate }}"
+        end_date: "{{ filter_enddate }}"
         date_type: "issued"
         types:
         - "enhancement"
@@ -266,8 +266,8 @@ content_views:
       description: "Include all errata updated as of the 1st of the month"
       repositories: "[]"
       rules:
-      - name: "errata-by-date-{{ errata_end_date }}"
-        end_date: "{{ errata_end_date }}"
+      - name: "errata-by-date-{{ filter_enddate }}"
+        end_date: "{{ filter_enddate }}"
         date_type: "issued"
         types:
         - "enhancement"
