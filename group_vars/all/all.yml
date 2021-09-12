@@ -7,7 +7,7 @@ description: "Published by ansible-tower on {{ ansible_date_time.date }}"
 filter_enddate: "{{ ansible_date_time.date }}"
 num_cvs_to_keep: 3
 content_views:
-  - name: "Demo7_SOE"
+  - name: "RHEL7_SOE"
     desc: "Red Hat Enterprise Linux 7 Standard Operating Environment Content"
     org: "{{ sat_organization }}"
     repositories:
@@ -67,7 +67,7 @@ content_views:
     - "App_Qualification"
     - "App_Production"
 
-  - name: "Demo8_SOE"
+  - name: "RHEL8_SOE"
     desc: "Red Hat Enterprise Linux 8 Standard Operating Environment Content"
     org: "{{ sat_organization }}"
     repositories:
@@ -129,7 +129,7 @@ content_views:
     - "App_Qualification"
     - "App_Production"
   
-  - name: "DemoUpgradeFromRHEL79"
+  - name: "UpgradeFromRHEL79"
     desc: "Red Hat Enterprise Linux 7 Standard Operating Environment Content"
     org: "{{ sat_organization }}"
     repositories:
@@ -188,7 +188,7 @@ content_views:
     environments:
     - "SOE_Development"
     
-  - name: "DemoUpgradeToRHEL84"
+  - name: "UpgradeToRHEL84"
     desc: "Red Hat Enterprise Linux 8 Standard Operating Environment Content"
     org: "{{ sat_organization }}"
     repositories:
@@ -241,7 +241,7 @@ content_views:
     environments:
     - "SOE_Development"
     
-  - name: "DemoJBossEAP73"
+  - name: "JBossEAP73"
     desc: "Red Hat JBoss EAP 7.3 Content"
     org: "{{ sat_organization }}"
     repositories:
@@ -281,7 +281,7 @@ content_views:
     - "App_Development"
     
 composite_content_views:
-  - name: "DemoRHEL79to84Upgrade"
+  - name: "RHEL79to84Upgrade"
     desc: "RHEL 7.9 to 8.4 Upgrade Content"
     org: "{{ sat_organization }}"
     components:
@@ -293,7 +293,7 @@ composite_content_views:
     - "SOE_Production"
     - "App_Development"
   
-  - name: "DemoJBoss_SOE"
+  - name: "JBoss_SOE"
     desc: "RHEL 7.9 to 8.4 Upgrade Content"
     org: "{{ sat_organization }}"
     components:
