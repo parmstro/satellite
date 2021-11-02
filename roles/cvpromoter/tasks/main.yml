@@ -8,6 +8,7 @@
     password: "{{ sat_publisher_password }}"
     server_url: "{{ sat_server_url }}"
     organization: "{{ sat_organization }}"
+    validate_certs: "{{ sat_validate_certs }}"
     content_view: "{{ item.name }}"
     description: "{{ description }}"
     current_lifecycle_environment: Library
@@ -20,6 +21,7 @@
     password: "{{ sat_publisher_password }}"
     server_url: "{{ sat_server_url }}"
     organization: "{{ sat_organization }}"
+    validate_certs: "{{ sat_validate_certs }}"
     content_view: "{{ item.name }}"
     description: "{{ description }}"
     current_lifecycle_environment: Library

@@ -12,7 +12,7 @@
     resource: "{{ sat_resource }}"
     search: "{{ sat_search_string }}"
     full_details: true 
-    validate_certs: false
+    validate_certs: "{{ sat_validate_certs }}"
   register: results 
 
 - set_fact:

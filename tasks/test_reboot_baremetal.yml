@@ -46,6 +46,7 @@
     password: "{{ sat_publisher_password }}"
     server_url: "{{ sat_server_url }}"
     organization: "{{ sat_organization }}"
+    validate_certs: "{{ sat_validate_certs }}"
     location: "{{ sat_location }}"
     name: "{{ host.fqdn }}"
     comment: "{{ host_build_comment }}"
@@ -69,7 +70,7 @@
     user: "{{ sat_publisher_username }}"
     password: "{{ sat_publisher_password }}"
     force_basic_auth: yes
-    validate_certs: no
+    validate_certs: "{{ sat_validate_certs }}"
     status_code: 200
     headers:
       Content-Type: application/json
@@ -88,7 +89,7 @@
     user: "{{ sat_publisher_username }}"
     password: "{{ sat_publisher_password }}"
     force_basic_auth: yes
-    validate_certs: no
+    validate_certs: "{{ sat_validate_certs }}"
     status_code: 200
     headers:
       Content-Type: application/json

@@ -9,6 +9,7 @@
     server_url: "{{ sat_server_url }}"
     name: "{{ item.date_filter_name}}"
     organization: "{{ sat_organization }}"
+    validate_certs: "{{ sat_validate_certs }}"
     content_view: "{{ item.name }}"
     description: "{{ description }}"
     filter_type: "erratum" # required for date filter
@@ -24,6 +25,7 @@
     server_url: "{{ sat_server_url }}"
     content_view: "{{ item.name }}"
     organization: "{{ sat_organization }}"
+    validate_certs: "{{ sat_validate_certs }}"
     description: "{{ description }}"
   loop: "{{ content_views }}"
 
@@ -34,6 +36,7 @@
     server_url: "{{ sat_server_url }}"
     content_view: "{{ item.name }}"
     organization: "{{ sat_organization }}"
+    validate_certs: "{{ sat_validate_certs }}"
     description: "{{ description }}"
   loop: "{{ composite_content_views }}"
 
