@@ -1,2 +1,2 @@
 # satellite
-Hi Everyone. If you found this page through the Red Hat blog, please be aware I will be publishing the complete Automating Content Management repo shortly.
+## Hi Everyone. If you found this page through the Red Hat blog, see the new content in the [AutomatingContentManagement]( https://github.com/parmstro/AutomatingContentManagement) repo
